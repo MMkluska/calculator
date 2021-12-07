@@ -1,0 +1,70 @@
+# Module 07 Lab11 and Lab12 using python module
+# Load and use your existing calculator operation
+# Inside this Graphical interface version
+import PySimpleGUI as sg
+import calculator as calc
+# Layout                                                         
+# Creat GUI
+layout = [[sg.Txt(''  * 30)],                      
+          [sg.Text('', size=(15, 1), font=('Times New Roman', 26), text_color='red', key='input')],
+          [sg.ReadFormButton('7'), sg.ReadFormButton('8'), sg.ReadFormButton('9'), sg.ReadFormButton('÷')],
+          [sg.ReadFormButton('4'), sg.ReadFormButton('5'), sg.ReadFormButton('6'), sg.ReadFormButton('x')],
+          [sg.ReadFormButton('1'), sg.ReadFormButton('2'), sg.ReadFormButton('3'), sg.ReadFormButton('-')],
+          [sg.ReadFormButton('0'), sg.ReadFormButton('//'), sg.ReadFormButton('+'),sg.ReadFormButton('%')],
+          [sg.ReadFormButton('c'),sg.ReadFormButton('='),sg.ReadFormButton('x^2'),sg.ReadFormButton("sqrt")]
+          ]
+# Set PySimpleGUI
+form = sg.FlexForm('Module07_Lab', default_button_element_size=(5, 2), auto_size_buttons=False, grab_anywhere=False)
+form.Layout(layout)
+# Set Process
+calc_string = '' # e.g a string of characters "4+5", "8/2","7-3"
+#Loop
+while True:
+    button, value = form.Read()                            # call GUI    
+    # Press Button    
+    if button is 'c':
+        calc_string = ''        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is '+':
+        calc_string += '+'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is '-':
+        calc_string += '-'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is 'x':
+        calc_string += '*'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is '÷':
+        calc_string += '/'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is '%':
+        calc_string += '%'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is '//':
+        calc_string += 'd'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is 'x^2':
+        calc_string += 's'        
+        form.FindElement('input').Update(calc_string)
+        
+    elif button is 'sqrt':
+        calc_string += 'r' 
+        form.FindElement('input').Update(calc_string)
+        
+    elif str(button) in '0123456789':
+        calc_string += str(button)
+        form.FindElement('input').Update(calc_string) 
+        
+    elif button is '=':
+        result = calc.gui_calc_func(calc_string)
+        form.FindElement('input').Update(result)  
+        
+    elif button is 'Quit'  or button is None:                      
+        break
