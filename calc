@@ -1,0 +1,56 @@
+import math
+
+def add(num1, num2):
+    return num1 + num2
+
+def subtract(num1, num2):
+    return num1 - num2
+
+def multiply(num1, num2):
+    return num1 * num2
+
+def divide(num1, num2):
+    return num1 / num2
+
+def modulus(num1, num2):
+    return num1 % num2
+
+def square(num1, num2):
+    return num1 ** num2
+
+def dfloor(num1, num2):
+    return num1 // num2
+
+def sroot(num1):
+    return math.sqrt(num1)
+
+def gui_calc_func(input_str): # input_str ==> "5+2" ==> [5,+,2]     
+    num1_str1 = input_str[0] # num1    
+    ops = input_str[1] # operator    
+    num1_str2 = input_str[2] # num2    
+    number_1 = int(num1_str1)
+    number_2 = int(num1_str2)
+    if ops == "+":
+        result = add(number_1, number_2)
+        return result    
+    elif ops == "-":
+        result = subtract(number_1,number_2)
+        return result    
+    elif ops == "/":
+        result = divide(number_1,number_2)
+        return result    
+    elif ops == "*":
+        result = multiply(number_1,number_2)
+        return result    
+    elif ops == "%":
+        result = modulus(number_1,number_2)
+        return result
+    elif ops == "s":
+        result = square(number_1,number_2)
+        return result
+    elif ops == "d":
+        result = dfloor(number_1,number_2)
+        return result
+    elif ops == "r":
+        result = sroot(number_1)
+        return result
